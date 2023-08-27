@@ -83,8 +83,8 @@ class Snake(Element):
 
 def generateRandomStar(snake: Snake):
     while True:
-        randomX = random.randint(1, maxLength - 1)
-        randomY = random.randint(1, maxLength - 1)
+        randomX = random.randint(1, maxLength - 1 - 1)
+        randomY = random.randint(1, maxLength - 1 - 1)
         if snake.x != randomX and snake.y != randomY:
             return Star(randomX, randomY)
 
