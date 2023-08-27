@@ -53,22 +53,24 @@ class Snake(Element):
         super().__init__(x, y, "蛇 ")
         self.direction = "right"
         self.tailLength = 0
-        self.bodyList: List[Element] = []
+        # 歷史移動紀錄，紀錄每次移動的位置的元素
+        self.movementHistories: List[Element] = []
         self.updatePosition()
 
     # 增加尾巴長度
     def growLengthOfTail(self):
         self.tailLength += 1
 
+    # 取得尾巴所有元素
     def getTailAllElements(self):
-        return self.bodyList[0:self.tailLength]
+        return self.movementHistories[0:self.tailLength]
 
     def updateDirection(self, direction):
         self.direction = direction
 
     def updatePosition(self):
         # 在index0插入元素
-        self.bodyList.insert(0, Element(self.x, self.y, self.symbol))
+        self.movementHistories.insert(0, Element(self.x, self.y, self.symbol))
         if self.direction == "right":
             self.x += 1
         elif self.direction == "left":
